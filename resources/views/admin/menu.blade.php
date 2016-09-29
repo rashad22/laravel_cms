@@ -63,9 +63,10 @@
                                     
                                         <ol class="dd-list">
 
-                                            <?php foreach ($data['active_menu'] as $key => $value) {?>
-                                                <li class="dd-item" data-id="{{$menu->post_id}}">
-                                            <input type="hidden" name="menu_item[]" value="{{$menu->post_id}}">
+                                            <?php 
+                                            foreach ($data['active_menu'] as $key => $value) {?>
+                                                <li class="dd-item" data-id="{{$value->post_id}}">
+                                            <input type="hidden" name="menu_item[]" value="{{$value->post_id}}">
                                                 <div class="dd-handle">{{$value->post_name}}</div>
                                             </li>
                                          <?php    }

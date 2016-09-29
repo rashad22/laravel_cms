@@ -88,25 +88,24 @@ class settingsController extends Controller {
         );
         $all_menu = array();
         $active_menu = array();
-        $post_list = DB::table('post')->where('post_status', 1)->get()->toArray();
-        ;
-        $active_menu_ids = DB::table('option_meta')->where('meta_key', 'menu_page_ids')->first()->meta_value;
+        $post_list = DB::table('post')->where(array('post_status'=> 1,'post_type'=>1))->get()->toArray();
+        
+        $active_menu_ids = DB::table('option_meta')->where('meta_key', 'menu_page_ids')->first();
+        if($active_menu_ids){
+			$data['post_list'] = $post_list;
+            $active_menu = unserialize($active_menu_ids->meta_value);
+            $active_menu_list = [];
+            foreach ($active_menu as $key => $value) {
+        		array_push($active_menu_list,DB::table('post')->where(array('post_id'=>$value))->first());
 
-        if ($active_menu_ids != 'N;') {
-            $menu_item = unserialize($active_menu_ids);
-            foreach ($post_list as $key => $value) {
-                if (in_array($value->post_id, $menu_item)) {
-                    array_push($active_menu, $value);
-                } else {
-                    array_push($all_menu, $value);
-                }
             }
-            $data['post_list'] = $all_menu;
-            $data['active_menu'] = $active_menu;
-        } else {
-            $data['post_list'] = $post_list;
+$data['active_menu'] = $active_menu_list;
+        }else{
+        	$data['post_list'] = $post_list;
             $data['active_menu'] = array();
         }
+        
+       
         //$all_post_ids = array_intersect(array_column($data['post_list'], 'post_id'), $menu_item);
 
         return view('admin/menu')->with('data', $data);
