@@ -103,7 +103,7 @@ return [
       | will not be safe. Please do this before deploying an application!
       |
      */
-    'key' => env('APP_KEY'),
+    'key' => 'TUZJYGGCVWfu9slr03zQkFxidUuFB4dN',
     'cipher' => 'AES-256-CBC',
     /*
       |--------------------------------------------------------------------------

@@ -24,7 +24,7 @@ return [
       | you may use many connections at once using the Database library.
       |
      */
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'mysql',
     /*
       |--------------------------------------------------------------------------
       | Database Connections
@@ -51,7 +51,7 @@ return [
             'driver' => 'mysql',
             'host' => 'localhost',
             'port' => '3306',
-            'database' => 'assistanceconsultancy',
+            'database' => 'laravel_cms',
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
@@ -98,9 +98,9 @@ return [
 
         'cluster' => false,
         'default' => [
-            'host' => env('REDIS_HOST', 'localhost'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', 6379),
+            'host' => 'localhost',
+            'password' => '',
+            'port' => '6379',
             'database' => 0,
         ],
     ],
