@@ -54,3 +54,11 @@ Route::post('save-theme-option', 'settingsController@save_theme_option');
 
 Route::get('add-gallery', 'galleryController@create');
 Route::get('gallery', 'galleryController@index');
+
+
+//thene one Route
+
+Route::get('theme-one', 'theme_one\themeoneController@index');
+Route::get('all-books', 'theme_one\themeoneController@all_books');
+Route::get('contact-us', 'theme_one\themeoneController@contact_us');
+Route::get('book-details/{page_slug}/{id}', 'theme_one\themeoneController@page');
