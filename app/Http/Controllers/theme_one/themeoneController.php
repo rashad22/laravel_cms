@@ -181,4 +181,26 @@ class themeoneController extends Controller {
         return view('website/theme_one/contact_us')->with('data', $data);
     }
 
+    public function image_gallery() {
+        $data = array(
+            'title' => 'Gallery',
+            'active' => 'gallery',
+            'meta' => 'gallery',
+            'main_menu' => $GLOBALS['main_menu']
+        );
+        $image_ids = DB::table('option_meta')->where('meta_key', 'gallery_items')->first();
+        if ($image_ids && ($image_ids->meta_value != '')) {
+            $items = array();
+            $image_ids = explode(',', $image_ids->meta_value);
+            foreach ($image_ids as $image) {
+                $item = DB::table('media')->where('med_id', $image)->first();
+                if ($item) {
+                    array_push($items, $item);
+                }
+            }
+            $data['gallery'] = $items;
+        }
+        return view('website/theme_one/gallery')->with('data', $data);
+    }
+
 }

@@ -28,6 +28,14 @@ echo json_encode([
     'csrfToken' => csrf_token(),
 ]);
 ?>
+
+        </script>
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         </script>
     </head>
 
@@ -291,26 +299,32 @@ echo json_encode([
                                     </li>
                                 </ul>
                             </li>
-                            <li class="{{$data['active']=='gallery'?'active':''}}">
+                            <li class="{{$data['active']=='media'?'active':''}}">
                                 <a href="#">
                                     <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
-                                    <span class="title">Gallery</span>
+                                    <span class="title">Media</span>
                                     <span class="fa arrow"></span>
                                 </a>
                                 <ul class="sub-menu">
-                                    <li class="{{$data['meta']=='new_gallery'?'active':''}}">
-                                        <a href="{{ URL::to('add-gallery') }}">
+                                    <li class="{{$data['meta']=='new_media'?'active':''}}">
+                                        <a href="{{ URL::to('add-media') }}">
                                             <i class="fa fa-angle-double-right"></i>
-                                            Add Gallery Image
+                                            Add Media Image
                                         </a>
                                     </li>
-                                    <li class="{{$data['meta']=='gallery_list'?'active':''}}">
-                                        <a href="{{ URL::to('gallery') }}">
+                                    <li class="{{$data['meta']=='media_list'?'active':''}}">
+                                        <a href="{{ URL::to('media') }}">
                                             <i class="fa fa-angle-double-right"></i>
-                                            Gallery
+                                            Media
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li class="{{$data['active']=='gallery'?'active':''}}">
+                                <a href="{{ URL::to('gallery') }}">
+                                    <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
+                                    <span class="title">Gallery</span>
+                                </a>
                             </li>
                         </ul>
                         <!-- END SIDEBAR MENU -->

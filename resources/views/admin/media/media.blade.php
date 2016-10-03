@@ -51,7 +51,7 @@
                                     </a>
                                 </span>
                             </td>
-                            <td><a href="" class="btn btn-success">Remove</a></td>
+                            <td><a href="{{URL::to('remove-media')}}/{{$image->med_id}}" class="btn btn-success">Remove</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

@@ -50,10 +50,21 @@ Route::post('logo-uploads', 'settingsController@site_logo');
 Route::post('save-theme-option', 'settingsController@save_theme_option');
 
 
+//mediaController Route
+
+Route::get('add-media', 'mediaController@create');
+Route::get('media', 'mediaController@index');
+Route::get('remove-media/{id}', 'mediaController@destroy');
+Route::resource('ajax-uploads', 'mediaController@store');
 //galleryController Route
 
-Route::get('add-gallery', 'galleryController@create');
 Route::get('gallery', 'galleryController@index');
+Route::resource('get-ajax-images', 'galleryController@all_ajax_images');
+Route::resource('ajax-media-caption', 'galleryController@get_caption');
+Route::resource('ajax-caption-update', 'galleryController@ajax_caption_update');
+Route::resource('ajax-gallery-update', 'galleryController@ajax_gallery_update');
+Route::post('save-gallery-name', 'galleryController@create');
+Route::get('remove-gallery-item/{id}', 'galleryController@destroy');
 
 
 //thene one Route
@@ -61,4 +72,5 @@ Route::get('gallery', 'galleryController@index');
 Route::get('theme-one', 'theme_one\themeoneController@index');
 Route::get('all-books', 'theme_one\themeoneController@all_books');
 Route::get('contact-us', 'theme_one\themeoneController@contact_us');
+Route::get('image-gallery', 'theme_one\themeoneController@image_gallery');
 Route::get('book-details/{page_slug}/{id}', 'theme_one\themeoneController@page');

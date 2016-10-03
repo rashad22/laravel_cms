@@ -62,8 +62,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="top-navbar-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="{{($data['meta'])=='home'?'active':''}}"><a href="{{ URL::to('theme-one') }}">Home</a></li>
-                        <li class="{{($data['meta'])=='books'?'active':''}}"><a href="{{ URL::to('all-books') }}">Books</a></li>
+                        <li class="{{($data['meta'])=='home'?'active':''}}"><a href="{{ URL::to('theme-one') }}">হোম </a></li>
+                        <li class="{{($data['meta'])=='books'?'active':''}}"><a href="{{ URL::to('all-books') }}">বইসমূহ</a></li>
+                        <li class="{{($data['meta'])=='gallery'?'active':''}}"><a href="{{ URL::to('image-gallery') }}">ফটো গ্যালারি</a></li>
                         <?php foreach ($data['main_menu'] as $menu) { ?>
                             <li class="{{($data['meta'])=="$menu->post_slug"?'active':''}}"><a href="{{ URL::to('book-details') }}/{{$menu->post_slug}}/{{$menu->post_id}}">{{$menu->post_name}}</a></li>
                         <?php } ?>
@@ -148,10 +149,7 @@
         <script src="{{asset('public/website/theme_one/js/retina-1.1.0.min.js')}}"></script>
         <script src="{{asset('public/website/theme_one/js/jquery.magnific-popup.min.js')}}"></script>
         <script src="{{asset('public/website/theme_one/flexslider/jquery.flexslider-min.js')}}"></script>
-        <script src="{{asset('public/website/theme_one/js/jflickrfeed.min.js')}}"></script>
         <script src="{{asset('public/website/theme_one/js/masonry.pkgd.min.js')}}"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="{{asset('public/website/theme_one/js/jquery.ui.map.min.js')}}"></script>
         <script src="{{asset('public/website/theme_one/js/scripts.js')}}"></script>
 
     </body>
