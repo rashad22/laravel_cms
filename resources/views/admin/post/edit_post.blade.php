@@ -55,8 +55,10 @@
                                     <div class="form-group">
                                         <label>Post Type</label>
                                         <select class="form-control" name="post_type" id="post_type">
-                                            <option value="1">Page</option>
-                                            <option value="2">Service</option>
+                                            <option <?php echo (isset($data['row']) && ($data['row']->post_type == 1) ? 'selected' : '') ?> value="1">Page</option>
+                                            <option <?php echo (isset($data['row']) && ($data['row']->post_type == 2) ? 'selected' : '') ?> value="2">Books</option>
+                                            <option <?php echo (isset($data['row']) && ($data['row']->post_type == 3) ? 'selected' : '') ?> value="3">Notice</option>
+                                            <option <?php echo (isset($data['row']) && ($data['row']->post_type == 4) ? 'selected' : '') ?> value="4">Service</option>
                                         </select>
                                     </div>
 
@@ -75,6 +77,18 @@
                                                 <span class="fileupload-new">Select file</span>
                                                 <span class="fileupload-exists">Change</span>
                                                 <input type="file" name="file" />
+                                            </span>
+                                            <span class="fileupload-preview"></span>
+                                            <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Books File</label>
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <span class="btn btn-primary btn-file">
+                                                <span class="fileupload-new">Select PDF file</span>
+                                                <span class="fileupload-exists">Change</span>
+                                                <input type="file" name="file2" />
                                             </span>
                                             <span class="fileupload-preview"></span>
                                             <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>

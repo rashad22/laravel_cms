@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/admin', 'HomeController@index');
 /*
   site controller
  */
@@ -30,6 +30,7 @@ Route::get('/services/', 'site@services');
   post controller
  */
 
+Route::get('/all-post/{type}', 'post@index');
 Route::get('/all-post', 'post@index');
 
 Route::get('/new-post', 'post@create');

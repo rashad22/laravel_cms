@@ -22,7 +22,7 @@ class post extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index($type = null) {
         //
 
         $data = array(
@@ -30,7 +30,18 @@ class post extends Controller {
             'active' => 'Post',
             'meta' => 'all Post'
         );
-        $data['result'] = DB::table('post')->paginate(10);
+        if ($type == 1) {
+            $data['meta'] = 'all Post';
+        } else if ($type == 2) {
+            $data['meta'] = 'books';
+        } else if ($type == 3) {
+            $data['meta'] = 'notices';
+        } else if ($type == 4) {
+            $data['meta'] = 'service';
+        } else {
+            $type = 1;
+        }
+        $data['result'] = DB::table('post')->where('post_type', $type)->paginate(10);
         return view('admin/post/post')->with('data', $data);
     }
 
@@ -73,6 +84,10 @@ class post extends Controller {
             if ($file) {
                 $med_id = $this->file_uploads($file);
             }
+            $file2 = Input::file('file2');
+            if ($file2) {
+                $med_id2 = $this->file_uploads($file2);
+            }
             $data_arr = array(
                 'post_title' => $data->input('post_title'),
                 'post_name' => $data->input('post_name'),
@@ -90,6 +105,14 @@ class post extends Controller {
                     'meta_key' => 'post_featured_image',
                     'post_id' => $post_id,
                     'meta_value' => $med_id,
+                );
+                DB::table('post_meta')->insert($meta_arr);
+            }
+            if ($file2 && $post_id > 0) {
+                $meta_arr = array(
+                    'meta_key' => 'post_uploads_file',
+                    'post_id' => $post_id,
+                    'meta_value' => $med_id2,
                 );
                 DB::table('post_meta')->insert($meta_arr);
             }
@@ -162,6 +185,10 @@ class post extends Controller {
             if ($file) {
                 $med_id = $this->file_uploads($file);
             }
+            $file2 = Input::file('file2');
+            if ($file2) {
+                $med_id2 = $this->file_uploads($file2);
+            }
             $data_arr = array(
                 'post_title' => $data->input('post_title'),
                 'post_name' => $data->input('post_name'),
@@ -182,6 +209,23 @@ class post extends Controller {
                     'meta_key' => 'post_featured_image',
                     'post_id' => $_POST['id'],
                     'meta_value' => $med_id,
+                );
+                $meta_check = DB::table('post_meta')->where($meta_con)->first();
+                if ($meta_check) {
+                    DB::table('post_meta')->where($meta_con)->update($meta_arr);
+                } else {
+                    DB::table('post_meta')->insert($meta_arr);
+                }
+            }
+            if ($file2 && $q > 0) {
+                $meta_con = array(
+                    'meta_key' => 'post_uploads_file',
+                    'post_id' => $_POST['id']
+                );
+                $meta_arr = array(
+                    'meta_key' => 'post_uploads_file',
+                    'post_id' => $_POST['id'],
+                    'meta_value' => $med_id2,
                 );
                 $meta_check = DB::table('post_meta')->where($meta_con)->first();
                 if ($meta_check) {

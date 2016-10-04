@@ -15,6 +15,9 @@
 
                         {!!$data['content']->post_content!!}
                     </p>
+                    <?php if (isset($data['post_file'])) { ?>
+                        <a class="big-link-1" target="_blank" href="<?php echo asset($data['post_file']->med_path . $data['post_file']->med_name); ?>" download="<?php echo asset($data['post_file']->med_path . $data['post_file']->med_name); ?>"><i class="fa fa-download"></i> Download</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>

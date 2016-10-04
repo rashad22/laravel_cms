@@ -22,9 +22,11 @@ class themeoneController extends Controller {
         }
         $all_post = DB::table('post')->where('post_status', 1)->get();
         $main_menu = array();
-        foreach ($all_post as $key => $value) {
-            if (in_array($value->post_id, $active_menu_ids)) {
-                array_push($main_menu, $value);
+        if (isset($active_menu_ids) && !empty($active_menu_ids)) {
+            foreach ($all_post as $key => $value) {
+                if (in_array($value->post_id, $active_menu_ids)) {
+                    array_push($main_menu, $value);
+                }
             }
         }
         $med_id = DB::table('options')->where('opt_name', 'site_logo')->first();
@@ -144,9 +146,12 @@ class themeoneController extends Controller {
         $data['content'] = DB::table('post')->where('post_type', 2)->get();
         foreach ($data['content'] as $key => &$value) {
             $meta = DB::table('post_meta')->where(array('post_id' => $value->post_id, 'meta_key' => 'post_featured_image'))->first();
+            $meta_file = DB::table('post_meta')->where(array('post_id' => $value->post_id, 'meta_key' => 'post_uploads_file'))->first();
             if ($meta) {
-
                 $value->post_featured_image = DB::table('media')->where('med_id', $meta->meta_value)->first();
+            }
+            if ($meta_file) {
+                $value->post_file = DB::table('media')->where('med_id', $meta_file->meta_value)->first();
             }
         }
         //return view('admin/post/post')->with('data',$data);
@@ -165,7 +170,11 @@ class themeoneController extends Controller {
         if ($meta) {
             $data['content_meta'] = DB::table('media')->where('med_id', $meta->meta_value)->first();
         }
+        $meta_file = DB::table('post_meta')->where(array('post_id' => $id, 'meta_key' => 'post_uploads_file'))->first();
 
+        if ($meta_file) {
+            $data['post_file'] = DB::table('media')->where('med_id', $meta_file->meta_value)->first();
+        }
         //return view('admin/post/post')->with('data',$data);
         return view('website/theme_one/dynamic_page')->with('data', $data);
     }

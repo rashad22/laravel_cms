@@ -87,7 +87,7 @@ class settingsController extends Controller {
             'meta' => 'menu'
         );
         $all_menu = array();
-        $active_menu = array();
+        $active_menu = [];
         $post_list = DB::table('post')->where(array('post_status' => 1, 'post_type' => 1))->get()->toArray();
 
         $active_menu_ids = DB::table('option_meta')->where('meta_key', 'menu_page_ids')->first();
@@ -95,13 +95,16 @@ class settingsController extends Controller {
             $data['post_list'] = $post_list;
             $active_menu = unserialize($active_menu_ids->meta_value);
             $active_menu_list = [];
-            foreach ($active_menu as $key => $value) {
-                array_push($active_menu_list, DB::table('post')->where(array('post_id' => $value))->first());
+            if (!empty($active_menu)) {
+                foreach ($active_menu as $key => $value) {
+                    $m = DB::table('post')->where(array('post_id' => $value, 'post_type' => 1))->first();
+                    array_push($active_menu_list, $m);
+                }
+                $data['active_menu'] = $active_menu_list;
             }
-            $data['active_menu'] = $active_menu_list;
         } else {
             $data['post_list'] = $post_list;
-            $data['active_menu'] = array();
+            $data['active_menu'] = '';
         }
 
 

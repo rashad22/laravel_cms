@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 slider-2-text wow fadeInUp">
-                <h1>We are <span class="violet">Andia</span> a super cool design agency.</h1>
-                <p>We design beautiful websites, logos and prints. Your project is safe with us.</p>
+                <h1>We are <span class="violet">HILLBD</span></h1>
+                <p> " একটি ভাল বই বন্ধু অপেক্ষা শ্রেষ্ঠতম</p>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 services-title wow fadeIn">
-                <h2>Our Books</h2>
+                <h2>নতুন বইসমূহ </h2>
             </div>
         </div>
         <div class="row">

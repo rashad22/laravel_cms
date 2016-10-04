@@ -46,7 +46,7 @@
                         <tr class="template-download fade in">
                             <td>
                                 <span class="preview">
-                                    <a href="">
+                                    <a href="{{$image->med_path}}{{$image->med_name}}" download="{{$image->med_path}}{{$image->med_name}}">
                                         <img width="250" height="150" src="{{$image->med_path}}{{$image->med_name}}" />
                                     </a>
                                 </span>

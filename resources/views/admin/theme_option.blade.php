@@ -64,7 +64,7 @@
                                 </div>
                                 <div class = "col-sm-6">
                                     <div class = "fileinput-new thumbnail">
-                                        <img src = "<?php echo asset($data['site_logo']->med_path . $data['site_logo']->med_name); ?>" alt = "site logo"/>
+                                        <img src = "<?php echo asset(isset($data['site_logo']) ? $data['site_logo']->med_path . $data['site_logo']->med_name : ''); ?>" alt = "site logo"/>
                                     </div>
                                 </div>
                             </div>

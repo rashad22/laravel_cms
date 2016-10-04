@@ -68,7 +68,7 @@
                         <?php foreach ($data['main_menu'] as $menu) { ?>
                             <li class="{{($data['meta'])=="$menu->post_slug"?'active':''}}"><a href="{{ URL::to('book-details') }}/{{$menu->post_slug}}/{{$menu->post_id}}">{{$menu->post_name}}</a></li>
                         <?php } ?>
-                        <li class="{{($data['meta'])=='contact'?'active':''}}"><a href="{{ URL::to('contact-us') }}">Contact Us</a></li>
+                        <li class="{{($data['meta'])=='contact'?'active':''}}"><a href="{{ URL::to('contact-us') }}">যোগাযোগ</a></li>
 
                     </ul>
                 </div>

@@ -20,8 +20,10 @@
 
                             <?php } ?>
                         </div>
-                        <h3>{{$service->post_title}}</h3>
-                        {!!$service->post_content!!}
+                        <h3>{{$service->post_name}}</h3>
+                        <?php if (isset($service->post_file)) { ?>
+                            <a class="big-link-1" target="_blank" href="<?php echo asset($service->post_file->med_path . $service->post_file->med_name); ?>" download="<?php echo asset($service->post_file->med_path . $service->post_file->med_name); ?>"><i class="fa fa-download"></i> Download</a>
+                        <?php } ?>
                         <a class="big-link-1" href="{{ URL::to('book-details') }}/{{$service->post_slug}}/{{$service->post_id}}">Read more</a>
                     </div>
                 </div>

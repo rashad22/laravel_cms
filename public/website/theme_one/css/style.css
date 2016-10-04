@@ -1032,4 +1032,6 @@ footer {
 }
 .navbar-nav li a{
     font-family: "Kalpurush";
+    font-size: 18px;
+    font-weight: bolder;
 }

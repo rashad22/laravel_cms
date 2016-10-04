@@ -21,12 +21,12 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $data= array(
-            'title' =>'Dashboard',
-            'active' =>'dashboard',
+        $data = array(
+            'title' => 'Dashboard',
+            'active' => 'dashboard',
             'meta' => 'dashboard'
-            );
-        return view('admin/pages/blank')->with('data',$data);
+        );
+        return view('admin/pages/blank')->with('data', $data);
     }
 
 }
