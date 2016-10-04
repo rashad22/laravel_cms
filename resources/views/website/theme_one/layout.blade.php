@@ -62,13 +62,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="top-navbar-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="{{($data['meta'])=='home'?'active':''}}"><a href="{{ URL::to('theme-one') }}">হোম </a></li>
-                        <li class="{{($data['meta'])=='books'?'active':''}}"><a href="{{ URL::to('all-books') }}">বইসমূহ</a></li>
-                        <li class="{{($data['meta'])=='gallery'?'active':''}}"><a href="{{ URL::to('image-gallery') }}">ফটো গ্যালারি</a></li>
+                        <li class="{{($data['meta'])=='home'?'active':''}}"><a href="{{ URL::to('theme-one') }}"><i class="fa fa-home"></i><br> হোম </a></li>
+                        <li class="{{($data['meta'])=='books'?'active':''}}"><a href="{{ URL::to('all-books') }}"><i class="fa fa-book"></i><br>  বইসমূহ</a></li>
+                        <li class="{{($data['meta'])=='gallery'?'active':''}}"><a href="{{ URL::to('image-gallery') }}"><i class="fa fa-photo"></i><br>  ফটো গ্যালারি</a></li>
                         <?php foreach ($data['main_menu'] as $menu) { ?>
-                            <li class="{{($data['meta'])=="$menu->post_slug"?'active':''}}"><a href="{{ URL::to('book-details') }}/{{$menu->post_slug}}/{{$menu->post_id}}">{{$menu->post_name}}</a></li>
+                            <li class="{{($data['meta'])=="$menu->post_slug"?'active':''}}"><a href="{{ URL::to('book-details') }}/{{$menu->post_slug}}/{{$menu->post_id}}"><i class="fa fa-hand-o-up"></i><br>  {{$menu->post_name}}</a></li>
                         <?php } ?>
-                        <li class="{{($data['meta'])=='contact'?'active':''}}"><a href="{{ URL::to('contact-us') }}">যোগাযোগ</a></li>
+                        <li class="{{($data['meta'])=='contact'?'active':''}}"><a href="{{ URL::to('contact-us') }}"><i class="fa fa-envelope"></i><br> যোগাযোগ</a></li>
 
                     </ul>
                 </div>
