@@ -281,6 +281,12 @@ echo json_encode([
                                             All Books
                                         </a>
                                     </li>
+                                    <li class="{{$data['meta']=='notice'?'active':''}}">
+                                        <a href="{{ URL::to('all-post/3')}}">
+                                            <i class="fa fa-angle-double-right"></i>
+                                            All Notice
+                                        </a>
+                                    </li>
 
                                 </ul>
                             </li>

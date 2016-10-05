@@ -35,7 +35,7 @@ class post extends Controller {
         } else if ($type == 2) {
             $data['meta'] = 'books';
         } else if ($type == 3) {
-            $data['meta'] = 'notices';
+            $data['meta'] = 'notice';
         } else if ($type == 4) {
             $data['meta'] = 'service';
         } else {

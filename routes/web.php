@@ -72,6 +72,7 @@ Route::get('remove-gallery-item/{id}', 'galleryController@destroy');
 
 Route::get('theme-one', 'theme_one\themeoneController@index');
 Route::get('all-books', 'theme_one\themeoneController@all_books');
+Route::get('notice', 'theme_one\themeoneController@notice');
 Route::get('contact-us', 'theme_one\themeoneController@contact_us');
 Route::get('image-gallery', 'theme_one\themeoneController@image_gallery');
 Route::get('book-details/{page_slug}/{id}', 'theme_one\themeoneController@page');

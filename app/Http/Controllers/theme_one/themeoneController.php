@@ -66,11 +66,16 @@ class themeoneController extends Controller {
             'meta' => 'home',
             'main_menu' => $GLOBALS['main_menu']
         );
-        $data['content'] = DB::table('post')->where('post_type', 2)->paginate(3);
+        $data['content'] = DB::table('post')->where('post_type', 2)->orderby('post_id', 'DESC')->limit(3)->get();
         foreach ($data['content'] as $key => &$value) {
             $meta = DB::table('post_meta')->where(array('post_id' => $value->post_id, 'meta_key' => 'post_featured_image'))->first();
             if ($meta) {
                 $value->post_featured_image = DB::table('media')->where('med_id', $meta->meta_value)->first();
+            }
+            $meta_file = DB::table('post_meta')->where(array('post_id' => $value->post_id, 'meta_key' => 'post_uploads_file'))->first();
+
+            if ($meta_file) {
+                $value->post_file = DB::table('media')->where('med_id', $meta_file->meta_value)->first();
             }
         }
         return view('website/theme_one/index')->with('data', $data);
@@ -138,12 +143,12 @@ class themeoneController extends Controller {
 
     public function all_books() {
         $data = array(
-            'title' => 'Books',
+            'title' => 'বই সমূহ ',
             'active' => 'books',
             'meta' => 'books',
             'main_menu' => $GLOBALS['main_menu']
         );
-        $data['content'] = DB::table('post')->where('post_type', 2)->get();
+        $data['content'] = DB::table('post')->where('post_type', 2)->orderby('post_id', 'DESC')->get();
         foreach ($data['content'] as $key => &$value) {
             $meta = DB::table('post_meta')->where(array('post_id' => $value->post_id, 'meta_key' => 'post_featured_image'))->first();
             $meta_file = DB::table('post_meta')->where(array('post_id' => $value->post_id, 'meta_key' => 'post_uploads_file'))->first();
@@ -210,6 +215,28 @@ class themeoneController extends Controller {
             $data['gallery'] = $items;
         }
         return view('website/theme_one/gallery')->with('data', $data);
+    }
+
+    public function notice() {
+        $data = array(
+            'title' => 'নোটিশ ',
+            'active' => 'notice',
+            'meta' => 'notice',
+            'main_menu' => $GLOBALS['main_menu']
+        );
+        $data['content'] = DB::table('post')->where('post_type', 3)->orderby('post_id', 'DESC')->get();
+        foreach ($data['content'] as $key => &$value) {
+            $meta = DB::table('post_meta')->where(array('post_id' => $value->post_id, 'meta_key' => 'post_featured_image'))->first();
+            $meta_file = DB::table('post_meta')->where(array('post_id' => $value->post_id, 'meta_key' => 'post_uploads_file'))->first();
+            if ($meta) {
+                $value->post_featured_image = DB::table('media')->where('med_id', $meta->meta_value)->first();
+            }
+            if ($meta_file) {
+                $value->post_file = DB::table('media')->where('med_id', $meta_file->meta_value)->first();
+            }
+        }
+        //return view('admin/post/post')->with('data',$data);
+        return view('website/theme_one/all_books')->with('data', $data);
     }
 
 }

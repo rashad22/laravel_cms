@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 services-title wow fadeIn">
-                <h2>Our Books</h2>
+                <h2>{{$data['title']}}</h2>
             </div>
         </div>
         <div class="row">

@@ -68,6 +68,7 @@
                         <?php foreach ($data['main_menu'] as $menu) { ?>
                             <li class="{{($data['meta'])=="$menu->post_slug"?'active':''}}"><a href="{{ URL::to('book-details') }}/{{$menu->post_slug}}/{{$menu->post_id}}"><i class="fa fa-hand-o-up"></i><br>  {{$menu->post_name}}</a></li>
                         <?php } ?>
+                        <li class="{{($data['meta'])=='notice'?'active':''}}"><a href="{{ URL::to('notice') }}"><i class="fa fa-calendar"></i><br> নোটিশ </a></li>
                         <li class="{{($data['meta'])=='contact'?'active':''}}"><a href="{{ URL::to('contact-us') }}"><i class="fa fa-envelope"></i><br> যোগাযোগ</a></li>
 
                     </ul>
@@ -83,7 +84,7 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-3 footer-box wow fadeInUp">
+                    <div class="col-sm-4 footer-box wow fadeInUp">
                         <h4>About Us</h4>
                         <div class="footer-box-text">
                             <p>
@@ -93,7 +94,7 @@
                             <p><a href="about.html">Read more...</a></p>
                         </div>
                     </div>
-                    <div class="col-sm-3 footer-box wow fadeInDown">
+                    <div class="col-sm-4 footer-box wow fadeInDown">
                         <h4>Email Updates</h4>
                         <div class="footer-box-text footer-box-text-subscribe">
                             <p>Enter your email and you'll be one of the first to get new updates:</p>
@@ -108,11 +109,8 @@
                             <p class="error-message"></p>
                         </div>
                     </div>
-                    <div class="col-sm-3 footer-box wow fadeInUp">
-                        <h4>Flickr Photos</h4>
-                        <div class="footer-box-text flickr-feed"></div>
-                    </div>
-                    <div class="col-sm-3 footer-box wow fadeInDown">
+
+                    <div class="col-sm-4 footer-box wow fadeInDown">
                         <h4>Contact Us</h4>
                         <div class="footer-box-text footer-box-text-contact">
                             <p><i class="fa fa-map-marker"></i> Address: {{$site_address==''?'No Address':$site_address}}</p>
