@@ -1,0 +1,6 @@
+[06-Oct-2016 12:34:22 UTC] PHP Fatal error:  Class 'Illuminate\Database\Connectors\PDO' not found in /home4/rahul689/public_html/hilbd.org/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php on line 196
+[06-Oct-2016 12:34:25 UTC] PHP Fatal error:  Class 'Illuminate\Database\Connectors\PDO' not found in /home4/rahul689/public_html/hilbd.org/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php on line 196
+[06-Oct-2016 12:35:27 UTC] PHP Fatal error:  Class 'Illuminate\Database\Connectors\PDO' not found in /home4/rahul689/public_html/hilbd.org/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php on line 196
+[06-Oct-2016 07:38:15 America/Chicago] PHP Fatal error:  Undefined class constant 'SQLSRV_ATTR_FETCHES_NUMERIC_TYPE' in /home4/rahul689/public_html/hilbd.org/config/database.php on line 77
+[06-Oct-2016 07:38:40 America/Chicago] PHP Fatal error:  Undefined class constant 'SQLSRV_ATTR_FETCHES_NUMERIC_TYPE' in /home4/rahul689/public_html/hilbd.org/config/database.php on line 77
+[06-Oct-2016 08:06:34 America/Chicago] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0

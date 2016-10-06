@@ -17,12 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index');
+Route::get('/ladmin', 'HomeController@index');
 /*
   site controller
  */
 
-Route::get('/', 'site@index');
+//Route::get('/', 'site@index');
 Route::get('page/{page_slug}/{id}', 'site@page');
 Route::get('/services/', 'site@services');
 
@@ -70,7 +70,7 @@ Route::get('remove-gallery-item/{id}', 'galleryController@destroy');
 
 //thene one Route
 
-Route::get('theme-one', 'theme_one\themeoneController@index');
+Route::get('/', 'theme_one\themeoneController@index');
 Route::get('all-books', 'theme_one\themeoneController@all_books');
 Route::get('notice', 'theme_one\themeoneController@notice');
 Route::get('contact-us', 'theme_one\themeoneController@contact_us');

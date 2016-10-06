@@ -42,18 +42,27 @@
                     <th>Action</th>
                 </tr>
                 <tbody class="files">
-                    <?php foreach ($data['gallerys'] as $key => $image) { ?>
-                        <tr class="template-download fade in">
-                            <td>
-                                <span class="preview">
-                                    <a href="{{$image->med_path}}{{$image->med_name}}" download="{{$image->med_path}}{{$image->med_name}}">
-                                        <img width="250" height="150" src="{{$image->med_path}}{{$image->med_name}}" />
-                                    </a>
-                                </span>
-                            </td>
-                            <td><a href="{{URL::to('remove-media')}}/{{$image->med_id}}" class="btn btn-success">Remove</a></td>
-                        </tr>
-                    <?php } ?>
+                    <?php
+                    foreach ($data['gallerys'] as $key => $image) {
+                        $string = $image->med_name;
+                        if (!preg_match("/\b(\.jpg|\.JPG|\.png|\.PNG|\.gif|\.GIF)\b/", $string, $output_array)) {
+
+                        } else {
+                            ?>
+                            <tr class="template-download fade in">
+                                <td>
+                                    <span class="preview">
+                                        <a href="{{$image->med_path}}{{$image->med_name}}" download="{{$image->med_path}}{{$image->med_name}}">
+                                            <img width="250" height="150" src="{{$image->med_path}}{{$image->med_name}}" />
+                                        </a>
+                                    </span>
+                                </td>
+                                <td><a href="{{URL::to('remove-media')}}/{{$image->med_id}}" class="btn btn-success"><i class="fa fa-trash-o"></i> Delete</a></td>
+                            </tr>
+                            <?php
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>

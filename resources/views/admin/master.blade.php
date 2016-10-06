@@ -250,7 +250,7 @@ echo json_encode([
                         <!-- BEGIN SIDEBAR MENU -->
                         <ul id="menu" class="page-sidebar-menu">
                             <li class="{{$data['active']=='dashboard'?'active':''}}">
-                                <a target="_blank" href="{{ url('theme-one') }}">
+                                <a target="_blank" href="{{ url('/') }}">
                                     <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
                                     <span class="title">Web site</span>
                                 </a>

@@ -24,7 +24,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/ladmin';
 
     /**
      * Create a new controller instance.

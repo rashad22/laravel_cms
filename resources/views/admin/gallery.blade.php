@@ -67,7 +67,7 @@
                                 </td>
                                 <td><a href="{{URL::to('remove-gallery-item')}}/{{$image->med_id}}" class="btn btn-success">Remove</a></td>
                             </tr>
-                        <?php
+                            <?php
                         }
                     }
                     ?>
@@ -167,16 +167,20 @@
                         } else {
                             status = '';
                         }
-                        all_media_grid += '<div class="item ' + status + '" data-id="' + value.med_id + '">' +
-                                '<div class="img_table">' +
-                                '<div class="img_row">' +
-                                '<div class="img_col">' +
-                                '<img src="' + src + '" alt=" ">' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="check_icon"><span class="glyphicon glyphicon-ok"></span></div>' +
-                                '</div>';
+                        if (/\.(jpe?g|png|gif|bmp)$/i.test(value.med_name)) {
+
+
+                            all_media_grid += '<div class="item ' + status + '" data-id="' + value.med_id + '">' +
+                                    '<div class="img_table">' +
+                                    '<div class="img_row">' +
+                                    '<div class="img_col">' +
+                                    '<img src="' + src + '" alt=" ">' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<div class="check_icon"><span class="glyphicon glyphicon-ok"></span></div>' +
+                                    '</div>';
+                        }
                     });
                     $('#gallery').html(all_media_grid);
                     $('.modal .all_media .all_items .item').click(function () {
@@ -274,6 +278,29 @@
                 }
             });
         }
+        $('#brows_file').change(function () {
+            var file_data = $(this).prop("files")[0];
+            var form_data = new FormData();
+            form_data.append("file", file_data);
+            $('.loading-img').show();
+            var url = "{{URL::to('ajax-uploads')}}";
+            $.ajax({
+                url: url,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'post',
+                data: form_data,
+                success: function (data) {
+                    if (data == 'error') {
+                        alert('Upload Failed');
+                    } else {
+                        $('#select_media .nav-tabs li,.tab-pane').removeClass('active');
+                        $('#select_media .nav-tabs li.select_media_tab,#existing_media').addClass('active');
+                    }
+                }
+            });
+        });
     </script>
 
 </aside>

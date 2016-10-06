@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+        $site_name = isset($GLOBALS['theme_options'][0]['meta_value']) ? $GLOBALS['theme_options'][0]['meta_value'] : 'Demo Site';
+        $site_email = isset($GLOBALS['theme_options'][1]['meta_value']) ? $GLOBALS['theme_options'][1]['meta_value'] : 'rashed@versatileitbd.com';
+        $site_contact = isset($GLOBALS['theme_options'][2]['meta_value']) ? $GLOBALS['theme_options'][2]['meta_value'] : '+880 xx xx xx xx';
+        $site_address = isset($GLOBALS['theme_options'][3]['meta_value']) ? $GLOBALS['theme_options'][3]['meta_value'] : 'versatileitbd Narda Dhaka-1212';
+        ?>
     <head>
 
         <meta charset="utf-8">
@@ -30,7 +35,7 @@
         <![endif]-->
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="{{asset('public/website/theme_one/ico/favicon.ico')}}">
+        <link rel="shortcut icon" href="<?php echo asset(isset($GLOBALS['site_logo']) ? $GLOBALS['site_logo']->med_path . $GLOBALS['site_logo']->med_name : ''); ?>" alt="{{$site_name}}">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('public/website/theme_one/ico/apple-touch-icon-144-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('public/website/theme_one/ico/apple-touch-icon-114-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('public/website/theme_one/ico/apple-touch-icon-72-precomposed.png')}}">
@@ -39,12 +44,7 @@
     </head>
 
     <body>
-        <?php
-        $site_name = isset($GLOBALS['theme_options'][0]['meta_value']) ? $GLOBALS['theme_options'][0]['meta_value'] : 'Demo Site';
-        $site_email = isset($GLOBALS['theme_options'][1]['meta_value']) ? $GLOBALS['theme_options'][1]['meta_value'] : 'rashed@versatileitbd.com';
-        $site_contact = isset($GLOBALS['theme_options'][2]['meta_value']) ? $GLOBALS['theme_options'][2]['meta_value'] : '+880 xx xx xx xx';
-        $site_address = isset($GLOBALS['theme_options'][3]['meta_value']) ? $GLOBALS['theme_options'][3]['meta_value'] : 'versatileitbd Narda Dhaka-1212';
-        ?>
+        
         <!-- Top menu -->
         <nav class="navbar" role="navigation">
             <div class="container">
@@ -55,14 +55,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{URL::to('theme-one')}}">
+                    <a class="navbar-brand" href="{{URL::to('/')}}">
                         <img height="63" width="167" src="<?php echo asset(isset($GLOBALS['site_logo']) ? $GLOBALS['site_logo']->med_path . $GLOBALS['site_logo']->med_name : ''); ?>" alt="{{$site_name}}" title="{{$site_name}}" />
+                        
                     </a>
+                    
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="top-navbar-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="{{($data['meta'])=='home'?'active':''}}"><a href="{{ URL::to('theme-one') }}"><i class="fa fa-home"></i><br> হোম </a></li>
+                        <li class="{{($data['meta'])=='home'?'active':''}}"><a href="{{ URL::to('/') }}"><i class="fa fa-home"></i><br> হোম </a></li>
                         <li class="{{($data['meta'])=='books'?'active':''}}"><a href="{{ URL::to('all-books') }}"><i class="fa fa-book"></i><br>  বইসমূহ</a></li>
                         <li class="{{($data['meta'])=='gallery'?'active':''}}"><a href="{{ URL::to('image-gallery') }}"><i class="fa fa-photo"></i><br>  ফটো গ্যালারি</a></li>
                         <?php foreach ($data['main_menu'] as $menu) { ?>
@@ -129,7 +131,7 @@
                         <p>Copyright 2016  {{$site_name}} <a target="_blank" href="http://www.versatileitbd.com">VersatileIT Ltd.</a></p>
                     </div>
                     <div class="col-sm-5 footer-social wow fadeIn">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/hamidpurinternationallibrery.hill"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-dribbble"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-pinterest"></i></a>

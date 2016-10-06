@@ -49,11 +49,15 @@ return [
         ],
         'mysql' => [
             'driver' => 'mysql',
-            'host' => 'localhost',
-            'port' => '3306',
-            'database' => 'laravel_cms',
-            'username' => 'root',
-            'password' => '',
+            //  'host' => 'localhost',
+            //  'port' => '3306',
+            //  'database' => 'rahul689_hilbd_cms',
+            // 'username' => 'rahul689_hillbd',
+            //  'password' => 'aminul',
+            'host' => env('DB_HOST', '127.0.0.1:3306'),
+            'database' => env('DB_DATABASE', 'laravel_cms'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
@@ -96,12 +100,13 @@ return [
      */
     'redis' => [
 
-        'cluster' => false,
+        'cluster' => true,
         'default' => [
             'host' => 'localhost',
-            'password' => '',
-            'port' => '6379',
-            'database' => 0,
+        //  'password' => 'aminul',
+        // 'user' => 'rahul689_hillbd',
+        //  'port' => '6379',
+        // 'database' => 'rahul689_hilbd_cms',
         ],
     ],
 ];
